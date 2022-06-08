@@ -12,10 +12,10 @@ export const addSector = async (req: Request, res: Response) => {
     if (!hasSector) {
       let newSector = await Sector.create({ sector_name, description });
       res.status(201);
-      res.json({ id: newSector.id });
+      res.json({ sucess: true, id: newSector.id });
     } else {
       // caso não já exista o nome do setor, retornará esta mensagem
-      res.json({ error: 'Setor já existe' });
+      res.json({ sucess: true, message: 'Setor já existe' });
     }
   } else {
     //caso não tenha sido enviado os valores de nome e descrição para o setor retornará esta mensagem.
@@ -62,7 +62,7 @@ export const updateSector = async (req: Request, res: Response) => {
       //salvando no banco as alterações;
       await sector.save();
       //retorno da solicitação
-      res.status(200).json({ response: 'sucess' });
+      res.status(200).json({ sucess: true, message: 'Update realizado' });
     }
   } catch (error) {
     //retornando o erro caso haja
@@ -79,9 +79,9 @@ export const delSector = async (req: Request, res: Response) => {
   if (sector) {
     //caso o encontrado, excluindo o mesmo no banco e retornando mensagem de sucesso
     await sector.destroy();
-    res.status(200).json({ response: 'sucess' });
+    res.status(200).json({ sucess: true, message: 'Setor deletado' });
   } else {
     // caso não encontre o setor, retorna a mensagem abaixo
-    res.json({ message: 'setor não encontrado' });
+    res.json({ sucess: false, message: 'Setor não encontrado' });
   }
 }

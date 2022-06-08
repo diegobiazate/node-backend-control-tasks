@@ -1,26 +1,29 @@
 import { Model, DataTypes } from "sequelize";
 import { sequelize } from "../instances/mysql";
 
-export interface SectorInstance extends Model {
+export interface CalledInstance extends Model {
   id: number;
-  sector_name: string;
+  title: string;
   description: string;
+  status: string;
 }
 
-export const Sector = sequelize.define<SectorInstance>('Sector', {
+export const Called = sequelize.define<CalledInstance>('Called', {
   id: {
     primaryKey: true,
     autoIncrement: true,
     type: DataTypes.INTEGER
   },
-  sector_name: {
-    type: DataTypes.STRING,
-    unique: true
+  title: {
+    type: DataTypes.STRING
   },
   description: {
     type: DataTypes.STRING
+  },
+  status: {
+    type: DataTypes.STRING
   }
 }, {
-  tableName: 'setores',
+  tableName: 'chamados',
   timestamps: false
 });
