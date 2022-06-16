@@ -25,6 +25,7 @@ export const addUser = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
   let { email, password } = req.body;
+  console.log(email, password);
   if (email && password) {
     let user = await User.findOne({ where: { email } });
     if (user) {

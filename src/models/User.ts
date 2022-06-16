@@ -25,6 +25,6 @@ export const User = sequelize.define<UserInstance>('User', {
     type: DataTypes.STRING
   }
 }, {
-  tableName: 'usuarios',
+  tableName: 'users',
   timestamps: false
 });
